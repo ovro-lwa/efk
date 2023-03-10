@@ -1,3 +1,3 @@
 # efk
 
-Requires podman-compose on RHEL.
+Requires podman-compose if you're on RHEL.
