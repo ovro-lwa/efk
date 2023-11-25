@@ -16,6 +16,7 @@ services:
     container_name: elasticsearch
     volumes:
             - ./conf/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+            - /data10/yuping/esdata:/usr/share/elasticsearch/data:rw,z
     environment:
       - "discovery.type=single-node"
     expose:
@@ -27,5 +28,9 @@ services:
     image: docker.elastic.co/kibana/kibana:8.6.2
     links:
       - "elasticsearch"
+    volumes:
+            - /data10/yuping/kibana-data:/usr/share/kibana/data:rw,z
+    expose:
+      - "5601"
     ports:
       - "5601:5601"
