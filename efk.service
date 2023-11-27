@@ -1,0 +1,18 @@
+[Unit]
+Description=ElasticSearch fluentd Kibana
+Wants=network-online.target
+After=network-online.target
+RequiresMountsFor=/data10/yuping/
+
+[Service]
+User=root
+RemainAfterExit=true
+RestartSec=60
+Type=oneshot
+Restart=on-failure
+WorkingDirectory=/data10/yuping/efk/
+ExecStart=/usr/bin/podman-compose up --detach
+ExecStop=/usr/bin/podman-compose down
+
+[Install]
+WantedBy=default.target
